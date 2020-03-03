@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="Products.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<meta charset="utf-8">
+</head>
+<body>
+
+<div id="titlebar" style="position:fixed;background:black;width:100%;">
+  <h1>Time is Money</h1>
+</div>
+<br><br><br><br><br><br><br><br>
+
+<!-- Navigation Bar -->
+<div class="topnav" style="position:fixed;background:;width:100%;"> 
+  <a href="index.html">Home</a>
+  <a class="active" href="Products.html">Products</a>
+  <a href="Basket.html">Basket</a>
+  <a href="Login.html">Login</a>
+  <a href="Contact.html">Contact</a>
+  <input type="text" placeholder="Search..">
+</div> 
+ <br><br><br>
+
+
+
+
+        </a>
+		
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col col-sm-9">
+        
+        <div class="row">
+          <div class="col col-xs-12 col-md-6 col-lg-4">
+            <div>
+              <img src="Resources/Watch2.jpg" width="400px" height="400px">
+          
+
+          <p>Tank Solo Cartier</p>
+          <p>&pound2450.00</p>
+          <p><input type="submit" value="Add to cart" class="btn"/></p>
+
+
+
+
+ </a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col col-sm-9">
+        
+        <div class="row">
+          <div class="col col-xs-12 col-md-6 col-lg-4">
+            <div>
+              <img src="Resources/Watch3.jpg" width="400px" height="400px">
+           
+
+
+       <p>Hugo Boss Steel</p>
+          <p>&pound1200.00</p>
+          <p><input type="submit" value="Add to cart" class="btn"/></p>
+
+
+ </a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col col-sm-9">
+        
+        <div class="row">
+          <div class="col col-xs-12 col-md-6 col-lg-4">
+            <div>
+              <img src="Resources/Watch4.jpg" width="400px" height="400px">
+           
+
+
+          <p>Omega Speedmaster</p>
+          <p>&pound1900.00</p>
+          <p><input type="submit" value="Add to cart" class="btn"/></p>
+
+
+ </a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col col-sm-9">
+       
+        <div class="row">
+          <div class="col col-xs-12 col-md-6 col-lg-4">
+            <div>
+              <img src="Resources/Watch5.jpg" width="400px" height="400px">
+           
+
+        
+    <p>Rado Gold</p>
+          <p>&pound2000.00</p>
+          <p><input type="submit" value="Add to cart" class="btn"/></p>
+
+
+
+          </div>
+</div>
+
+
+
+
+      <div id="calculator">
+      </div>
+      <form>
+            <div id='shipping-form'>
+                <div>
+                    <label>Name</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div>
+                    <label>Address Line 1</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div>
+                    <label>Address Line 2</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div>
+                    <label>City</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div>
+                    <label>County</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div>
+                    <label>Post Code</label>
+                    <input type="text" class="form-control">
+                </div>
+            <div>
+                <input type="button" value="Submit" id="finish" />
+            </div>
+        </form>
+
+      </div>
+</div>
+
+
+
+<script>
+
+function hideShippingForm() {
+    $('#shipping-form').hide();
+}
+hideShippingForm();
+
+$('.btn').click(function() {
+    let productName = $(this).parent().siblings('p').first().text();
+    let itemPrice = $(this).parent().siblings('p').eq(1).text();
+
+    $('.cart').append('<p><div>');
+    $('.cart').append(productName);;
+    $('.cart').append('<div style="float:right;">');
+    $('.cart').append(itemPrice);
+
+    calculate(itemPrice);
+});
+
+let subTotal = 0;
+let tax = 0;
+let total = 0;
+
+function calculate(itemPrice) {
+    priceInDecimal = itemPrice.slice(1);
+    $('#calculator').empty();
+    $('#calculator').append('<p><div>');
+    subTotal += parseFloat(priceInDecimal);
+    $('#calculator').append("sub total: £" + subTotal.toFixed(2));
+    $('#calculator').append('<p><div>');
+    tax = subTotal*10/100;
+    $('#calculator').append("tax: £" + tax.toFixed(2));
+    $('#calculator').append('<p><div>');
+    total = subTotal + tax;
+    $('#calculator').append("Total: £" + total.toFixed(2));
+
+    $('#calculator').append('<p><input type=button value="Next" id="next" class="test" />');
+
+    $('.test').click(function() {
+        console.log("Order successfully processed");
+        $('#shipping-form').show();
+    });
+}
+
+$('#finish').click(function() {
+    window.alert('Thank you for your order!');
+});
+</script>
